@@ -2,26 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@layer components {
+    .background-div-style {
+        @apply min-h-screen flex flex-col align-top items-center justify-center bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500;
+    }
+    .link-div-style {
+        @apply absolute top-2 flex w-full justify-between items-center py-4 px-6
+    }
 }
