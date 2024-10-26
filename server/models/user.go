@@ -7,11 +7,10 @@ import (
 
 type User struct {
 	gorm.Model
-	Email     string
-	FirstName string
-	LastName  string
-	Password  string
-	Sessions  []UserSession
+	Email    string
+	Username string
+	Password string
+	Sessions []UserSession
 }
 
 type UserSession struct {

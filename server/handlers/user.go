@@ -9,10 +9,9 @@ import (
 )
 
 type UserCreateRequestBody struct {
-	Email     string `json:"email"`
-	FirstName string `json:"firstName"`
-	LastName  string `json:"lastName"`
-	Password  string `json:"password"`
+	Email    string `json:"email"`
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
 
 func HandleUser(r chi.Router, db *gorm.DB) {
@@ -36,8 +35,14 @@ func handleUserCreate(w http.ResponseWriter, r *http.Request, db *gorm.DB) {
 	db.Model(&models.User{}).Where("email = ?", body.Email).Count(&count)
 
 	if count > 0 {
-		http.Error(w, http.StatusText(http.StatusConflict), http.StatusConflict)
+		http.Error(w, "Email", http.StatusConflict)
 		return
+	}
+
+	db.Model(&models.User{}).Where("username = ?", body.Username).Count(&count)
+
+	if count > 0 {
+		http.Error(w, "Username", http.StatusConflict)
 	}
 
 	hashedPassword, err := CreateHashForPassword(body.Password)
@@ -48,10 +53,9 @@ func handleUserCreate(w http.ResponseWriter, r *http.Request, db *gorm.DB) {
 	}
 
 	user := models.User{
-		Email:     body.Email,
-		FirstName: body.FirstName,
-		LastName:  body.LastName,
-		Password:  string(hashedPassword),
+		Email:    body.Email,
+		Username: body.Username,
+		Password: string(hashedPassword),
 	}
 
 	result := db.Create(&user)

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 import "../globals.css";
 
-export default function SignInPage() {
+export default function DashboardPage() {
   return (
     <main>
       <div className="background-div-style">
