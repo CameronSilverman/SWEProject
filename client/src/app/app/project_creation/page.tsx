@@ -2,7 +2,6 @@
 
 import ProjectForm from "./project_creation_form";
 import Link from "next/link";
-import "../globals.css";
 
 export default function ProjectCreationPage() {
   return (

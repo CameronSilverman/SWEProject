@@ -1,6 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 
-import "../globals.css";
 import "./project_form.css";
 
 interface IFormInput {

@@ -2,7 +2,6 @@
 
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
-import '../globals.css';
 import ky, { HTTPError, TimeoutError } from 'ky';
 import { HTTPStatusCodes } from '@/util/http';
 import { useState } from 'react';
