@@ -22,7 +22,7 @@ services:
     volumes:
       - ./env/config:/go/src/server/config
     ports:
-      - 3000:3000
+      - 8080:3000
     networks:
       - server
 
