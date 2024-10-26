@@ -32,12 +32,12 @@ export default function Header() {
                 </Link>
 
                 <div className="flex gap-4">
-                    <Link href="/sign_in_page">
+                    <Link href="/auth/login">
                         <button className="px-6 py-2 rounded-full bg-orange-400 hover:bg-orange-500 text-white transition-colors">
                             Log in
                         </button>
                     </Link>
-                    <Link href="/sign_up_page">
+                    <Link href="/auth/register">
                         <button className="px-6 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors">
                             Sign up
                         </button>

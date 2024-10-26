@@ -1,7 +1,6 @@
 "use client";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
-import "../globals.css";
 
 export default function DashboardPage() {
   return (

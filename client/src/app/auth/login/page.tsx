@@ -36,7 +36,7 @@ export default function SignInPage() {
 			if (error instanceof TimeoutError) return setTimeout(true);
 		}
 
-		router.replace('/dashboard_page')
+		router.replace('/app/dashboard')
 	});
 
 	return (
