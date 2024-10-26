@@ -10,14 +10,14 @@ export default function Home() {
         <div className="link-div-style">
           
             <Link href="/sign_in_page">
-              <button className = "bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">Log In</button>
+              <button className = "orange-round-button">Log In</button>
             </Link>
             <Link href="/project_creation">
-              <button className = "bg-white text-black px-4 py-2 rounded-lg hover:bg-neutral-300 transition-colors">Project Creation Page</button>
+              <button className = "white-round-button">Project Creation Page</button>
             </Link>
           
             <Link href="/sign_up_page">
-            <button className = "bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Signup</button>
+            <button className = "blue-round-button">Signup</button>
             </Link>
           
         </div>

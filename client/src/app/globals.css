@@ -9,4 +9,13 @@
     .link-div-style {
         @apply absolute top-2 flex w-full justify-between items-center py-4 px-6
     }
+    .orange-round-button{
+        @apply bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors
+    }
+    .white-round-button{
+        @apply bg-white text-black px-4 py-2 rounded-lg hover:bg-neutral-300 transition-colors
+    }
+    .blue-round-button{
+        @apply bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors
+    }
 }
