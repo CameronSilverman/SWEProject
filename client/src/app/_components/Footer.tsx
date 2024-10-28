@@ -1,6 +1,8 @@
 // components/Footer.tsx
 import Link from 'next/link';
 
+// REMINDER/FIXME  - None of these links/pages linked to are implemented
+
 const Footer = () => {
     return (
         <footer className="relative z-10 bg-gray-900 text-white mt-auto">

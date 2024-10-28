@@ -53,11 +53,6 @@ export default function SignUpPage() {
 	return (
 		<main>
 			<div className="background-div-style">
-				<div className="link-div-style">
-					<Link href="/">
-						<button className="orange-round-button">Home</button>
-					</Link>
-				</div>
 				<div className="flex flex-col align-middle bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
 					<h2 className="text-center text-2xl font-bold mb-6">
 						Sign up for CollabraGator

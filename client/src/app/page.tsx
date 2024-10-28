@@ -5,9 +5,7 @@ import Link from "next/link";
 export default function Home() {
     return (
         <main className="min-h-screen relative">
-            {/* Gradient Background */}
-
-
+            
             {/* Main Content - Added padding-top to account for fixed nav */}
             <div className="relative z-10 max-w-4xl mx-auto px-4 pt-32 text-center">
                 {/* Hero Section */}
@@ -16,7 +14,11 @@ export default function Home() {
                 </h1>
 
                 <div className="mt-12 flex justify-center">
-                    <Link href="/project_creation">
+                    {/*
+                        If signed out: take user to sign-up page
+                        If signed in: take user to dashboard, project exploration page, or project creation page - tbd
+                    */}
+                    <Link href="/auth/register">
                         <button className="px-8 py-3 text-lg rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors shadow-lg">
                             Get Started Now
                         </button>
@@ -67,7 +69,7 @@ export default function Home() {
                 <div className="mt-24 mb-12 p-8 rounded-xl backdrop-blur-sm bg-white/10">
                     <h2 className="text-2xl font-bold text-white mb-4">Ready to start contributing?</h2>
                     <p className="text-gray-100 mb-6">Join your university&apos;s open source community today.</p>
-                    <Link href="/sign_up_page">
+                    <Link href="/auth/register">
                         <button className="px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors shadow-lg">
                             Create Account
                         </button>
