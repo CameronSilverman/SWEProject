@@ -1,6 +1,8 @@
 "use client";
 
-export default function Home() {
+import ProjectCard from "@/app/_components/cards/ProjectCard";
+
+export default function ProfilePage() {
     const projects = [
         {
             id: 1,
@@ -34,6 +36,17 @@ export default function Home() {
             lastUpdated: "2 weeks ago",
             stars: 32,
             collaborators: 5
+        },
+        {
+            id: 4,
+            name: "A new one",
+            tags: ["typescript", "react-native", "firebase", "xcode", "python", "django", "postgresql", "javascript", "react", "nextjs"],
+            description: "Mobile app for discovering and organizing campus events.",
+            status: "Failed",
+            statusColor: "bg-red-500",
+            lastUpdated: "8 months ago",
+            stars: 0,
+            collaborators: 1
         }
     ];
 
@@ -87,32 +100,7 @@ export default function Home() {
 
                     <div className="space-y-6">
                         {projects.map(project => (
-                            <div key={project.id} className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors">
-                                <div className="flex justify-between items-start mb-2">
-                                    <h3 className="font-bold text-lg">{project.name}</h3>
-                                    <span className={`text-xs ${project.statusColor} text-white px-2 py-1 rounded-lg`}>
-                                        {project.status}
-                                    </span>
-                                </div>
-
-                                <div className="flex flex-wrap gap-2 mb-3">
-                                    {project.tags.map(tag => (
-                                        <span key={tag} className="text-xs bg-gray-200 text-gray-700 px-2 py-1 rounded-full">
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-
-                                <p className="text-sm text-gray-600 mb-4">{project.description}</p>
-
-                                <div className="flex justify-between items-center text-sm text-gray-500">
-                                    <div className="flex items-center gap-4">
-                                        <span>⭐ {project.stars}</span>
-                                        <span>👥 {project.collaborators}</span>
-                                    </div>
-                                    <span>Updated {project.lastUpdated}</span>
-                                </div>
-                            </div>
+                            <ProjectCard key={project.id} project={project} />
                         ))}
                     </div>
                 </div>
