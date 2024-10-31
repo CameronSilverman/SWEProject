@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import SignedOutHeader from "@/app/_components/SignedOutHeader";
+import Header from "@/app/_components/Header";
 import Footer from "@/app/_components/Footer";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,7 +35,7 @@ export default function RootLayout({
     {/* Global Gradient Background */}
     <div className="fixed inset-0 bg-gradient-to-br from-blue-600 via-purple-500 to-orange-400 opacity-90" />
 
-    <SignedOutHeader/>
+    <Header/>
 
     <div className="relative z-10 flex-grow">
         {children}
