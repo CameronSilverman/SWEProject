@@ -58,7 +58,20 @@ export default function Header() {
                 )}
                 {pathname.includes("/app") && (
                     <div className="flex gap-4">
-                        {pathname === "/app/dashboard" ? (
+                        {pathname === "/app/profile" ? (
+                            <>
+                                <Link href="/app/dashboard">
+                                    <button className="px-6 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors">
+                                        Issues
+                                    </button>
+                                </Link>
+                                <Link href="/app/project_search">
+                                    <button className="px-6 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors">
+                                        Projects
+                                    </button>
+                                </Link>
+                            </>
+                        ) : pathname === "/app/dashboard" ? (
                             <Link href="/app/project_search">
                                 <button className="px-6 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors">
                                     Projects
@@ -67,7 +80,7 @@ export default function Header() {
                         ) : (
                             <Link href="/app/dashboard">
                                 <button className="px-6 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors">
-                                    Dashboard
+                                    Issues
                                 </button>
                             </Link>
                         )}
