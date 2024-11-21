@@ -17,7 +17,7 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     return (
-        <div className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors">
+        <div className="bg-gray-50 rounded-lg p-6 shadow-md overflow-hidden border border-gray-200 transition-transform duration-200 ease-in-out hover:scale-[1.02] hover:shadow-lg">
             <div className="flex justify-between items-start mb-2">
                 <h3 className="font-bold text-lg">{project.name}</h3>
                 <span className={`text-xs ${project.statusColor} text-white px-2 py-1 rounded-lg`}>

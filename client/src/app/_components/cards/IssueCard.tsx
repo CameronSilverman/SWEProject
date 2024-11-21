@@ -30,7 +30,7 @@ const IssueCard: React.FC<IssueCardProps> = ({
   description
 }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 h-56">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 h-56 transition-transform duration-200 ease-in-out hover:scale-[1.02] hover:shadow-lg">
       <div className="p-4 h-full flex flex-col">
         {/* Header */}
         <div className="flex justify-between items-center mb-3">
