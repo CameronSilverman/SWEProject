@@ -54,7 +54,7 @@ const mockProjects: Project[] = [
 	},
 ];
 
-const ProjectSearchPage = () => {
+export default function Page() {
 	return (
 		<main className="min-h-screen pt-32 pb-12 px-6 md:px-12 lg:px-24">
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -64,6 +64,4 @@ const ProjectSearchPage = () => {
 			</div>
 		</main>
 	);
-};
-
-export default ProjectSearchPage;
+}

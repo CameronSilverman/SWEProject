@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function TermsOfService() {
+export default function Page() {
 	return (
 		<main className="min-h-screen relative">
 			<div className="relative z-10 max-w-4xl mx-auto px-4 pt-32 pb-12">

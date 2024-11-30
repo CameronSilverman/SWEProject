@@ -3,7 +3,7 @@
 import ProjectForm from './project_creation_form';
 import Link from 'next/link';
 
-export default function ProjectCreationPage() {
+export default function Page() {
 	return (
 		<main>
 			<div className="background-div-style">

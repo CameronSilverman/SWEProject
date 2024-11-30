@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-export default function Home() {
+export default function Page() {
 	return (
 		<main className="min-h-screen relative">
 			{/* Main Content - Added padding-top to account for fixed nav */}

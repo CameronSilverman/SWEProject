@@ -2,7 +2,7 @@
 
 import ProjectCard from '@/components/card/projectCard';
 
-export default function ProfilePage() {
+export default function Page() {
 	const projects = [
 		{
 			id: 1,
