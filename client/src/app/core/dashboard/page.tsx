@@ -1,4 +1,4 @@
-import {IssueCard} from '@/components/card/issue-card';
+import { IssueDisplay } from '@/components/display/issue-display';
 
 // Mock data type
 interface Issue {
@@ -124,19 +124,8 @@ const mockIssues: Issue[] = [
 
 export default function Page() {
 	return (
-		<main className="min-h-screen pt-32 pb-12 px-6 md:px-12 lg:px-24">
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-				{mockIssues.map(issue => (
-					<IssueCard
-						key={issue.id}
-						title={issue.title}
-						assignee={issue.assignee}
-						difficulty={issue.difficulty}
-						technologies={issue.technologies}
-						description={issue.description}
-					/>
-				))}
-			</div>
+		<main className="min-h-screen pt-32 pb-12 px-6 md:px-12 lg:px-80">
+			<IssueDisplay issues={mockIssues} />
 		</main>
 	);
 }
