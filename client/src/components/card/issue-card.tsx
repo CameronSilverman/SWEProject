@@ -20,16 +20,21 @@ export function IssueCard({
 	description,
 }: IssueCardProps) {
 	return (
-		<Card className="h-[300px] w-10/12 flex flex-col transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg cursor-pointer">
+		<Card className="w-full flex flex-col transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg cursor-pointer">
 			<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-				<CardTitle className="text-2xl font-bold">{title}</CardTitle>
+				<CardTitle className="text-xl font-bold">{title}</CardTitle>
 				<DifficultyBadge difficulty={difficulty} />
 			</CardHeader>
-			<CardContent className="flex-grow">
-				<p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-					{description}
-				</p>
-				<div className="flex items-center mb-4">
+			<CardContent>
+				<p className="text-sm text-gray-500 mb-4">{description}</p>
+				<div className="flex flex-wrap gap-2 mb-4">
+					{technologies.map((tech, index) => (
+						<Badge key={index} variant="secondary">
+							{tech}
+						</Badge>
+					))}
+				</div>
+				<div className="flex items-center justify-end text-sm text-gray-500">
 					<Avatar className="h-8 w-8">
 						<AvatarImage />
 						<AvatarFallback>
@@ -39,14 +44,7 @@ export function IssueCard({
 								.join('')}
 						</AvatarFallback>
 					</Avatar>
-					<span className="ml-2 text-sm font-medium">{assignee}</span>
-				</div>
-				<div className="flex flex-wrap gap-2">
-					{technologies.slice(0, 3).map((tech, index) => (
-						<Badge key={index} variant="secondary">
-							{tech}
-						</Badge>
-					))}
+					<span className="ml-2 font-medium">{assignee}</span>
 				</div>
 			</CardContent>
 		</Card>
