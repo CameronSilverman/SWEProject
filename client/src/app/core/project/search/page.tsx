@@ -1,5 +1,5 @@
 'use client';
-import ProjectCard from '@/components/card/projectCard';
+import ProjectCard from '@/components/card/project-card';
 
 // Mock data type
 interface Project {

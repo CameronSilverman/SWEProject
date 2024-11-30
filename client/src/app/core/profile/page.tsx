@@ -1,6 +1,6 @@
 'use client';
 
-import ProjectCard from '@/components/card/projectCard';
+import ProjectCard from '@/components/card/project-card';
 
 export default function Page() {
 	const projects = [
