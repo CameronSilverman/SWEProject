@@ -1,9 +1,35 @@
 // components/Header.tsx
 'use client';
 
+import { SignedIn, SignedOut } from '@clerk/nextjs';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
+
+const HeaderButton = ({
+	color,
+	children,
+	href,
+}: {
+	href: string;
+	color: 'orange' | 'blue';
+	children: ReactNode;
+}) => {
+	const colorString =
+		color === 'orange'
+			? 'bg-orange-400 hover:bg-orange-500'
+			: 'bg-blue-600 hover:bg-blue-700';
+
+	return (
+		<Link href={href}>
+			<button
+				className={`px-6 py-2 rounded-full text-white transition-colors ${colorString}`}
+			>
+				{children}
+			</button>
+		</Link>
+	);
+};
 
 export default function Header() {
 	const [isScrolled, setIsScrolled] = useState(false);
@@ -41,55 +67,24 @@ export default function Header() {
 				{/* TODO: Make it work with session_token */}
 
 				{/* Signed Out Buttons */}
-				{!pathname.includes('/app') && (
-					<div className="flex gap-4">
-						<Link href="/auth/login">
-							<button className="px-6 py-2 rounded-full bg-orange-400 hover:bg-orange-500 text-white transition-colors">
-								Log in
-							</button>
-						</Link>
-						<Link href="/auth/register">
-							<button className="px-6 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors">
-								Sign up
-							</button>
-						</Link>
-					</div>
-				)}
-				{pathname.includes('/app') && (
-					<div className="flex gap-4">
-						{pathname === '/app/profile' ? (
-							<>
-								<Link href="/app/dashboard">
-									<button className="px-6 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors">
-										Issues
-									</button>
-								</Link>
-								<Link href="/app/project_search">
-									<button className="px-6 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors">
-										Projects
-									</button>
-								</Link>
-							</>
-						) : pathname === '/app/dashboard' ? (
-							<Link href="/app/project_search">
-								<button className="px-6 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors">
-									Projects
-								</button>
-							</Link>
-						) : (
-							<Link href="/app/dashboard">
-								<button className="px-6 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors">
-									Issues
-								</button>
-							</Link>
-						)}
-						<Link href="/app/profile">
-							<button className="px-6 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white transition-colors">
-								Profile
-							</button>
-						</Link>
-					</div>
-				)}
+				<div className="flex gap-4">
+					<SignedOut>
+						<HeaderButton href="/auth/login" color="orange">
+							Log in
+						</HeaderButton>
+						<HeaderButton href="/auth/register" color="blue">
+							Sign up
+						</HeaderButton>
+					</SignedOut>
+					<SignedIn>
+						<HeaderButton href="/dashboard" color="blue">
+							Dashboard
+						</HeaderButton>
+						<HeaderButton href="/profile" color="blue">
+							Profile
+						</HeaderButton>
+					</SignedIn>
+				</div>
 			</div>
 		</nav>
 	);
