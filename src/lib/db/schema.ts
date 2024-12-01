@@ -177,7 +177,6 @@ export const projects = pgTable('projects', {
 	description: text(),
 	archived: boolean().default(false),
 	featured: boolean().default(false),
-	technologies: projectTechnologies().array(),
 });
 
 export const projectContributors = pgTable('project_contributors', {
@@ -202,5 +201,6 @@ export const projectTasks = pgTable('project_tasks', {
 	title: varchar({ length: 256 }).notNull(),
 	description: text(),
 	difficulty: difficulty().notNull(),
+	technologies: projectTechnologies().array(),
 	completed: boolean().default(false),
 });

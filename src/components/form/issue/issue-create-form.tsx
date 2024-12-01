@@ -14,7 +14,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { InferSelectModel } from 'drizzle-orm';
-import { projects } from '@/lib/db/schema';
+import { projects, projectTechnologies } from '@/lib/db/schema';
 import {
 	Select,
 	SelectContent,
@@ -29,7 +29,6 @@ import { createIssueWithData } from '@/lib/issues';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { ButtonLoading } from '@/components/ui/loading-button';
-import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 
 const formSchema = z.object({
@@ -42,6 +41,10 @@ const formSchema = z.object({
 		.min(1, { message: 'Description is required' })
 		.max(500, { message: 'Description cannot be more than 500 characters' }),
 	project: z.string().min(1, { message: 'Project is required' }), // this shouldn't even be empty
+	technologies: z
+		.array(z.enum(projectTechnologies.enumValues))
+		.min(1, { message: 'Select at least 1 technology' })
+		.max(3, { message: 'Only 3 technologies can be selected' }),
 	difficulty: z.enum(['easy', 'medium', 'hard']).default('easy'),
 });
 
@@ -120,8 +123,7 @@ export function IssueCreateForm({
 						</FormItem>
 					)}
 				/>
-				{/* Start using this in ProjectCreateForm... I had a little bit of a mixup as to what I was coding */}
-				{/* <FormField
+				<FormField
 					control={form.control}
 					name="technologies"
 					render={({ field }) => (
@@ -146,7 +148,7 @@ export function IssueCreateForm({
 							<FormMessage />
 						</FormItem>
 					)}
-				/> */}
+				/>
 				<FormField
 					control={form.control}
 					name="difficulty"
