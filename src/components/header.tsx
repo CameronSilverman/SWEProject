@@ -77,10 +77,10 @@ export default function Header() {
 						</HeaderButton>
 					</SignedOut>
 					<SignedIn>
-						<HeaderButton href="/dashboard" color="blue">
+						<HeaderButton href="/core/dashboard" color="orange">
 							Dashboard
 						</HeaderButton>
-						<HeaderButton href="/profile" color="blue">
+						<HeaderButton href="/core/profile" color="blue">
 							Profile
 						</HeaderButton>
 					</SignedIn>
