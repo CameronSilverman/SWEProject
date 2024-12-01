@@ -1,3 +1,4 @@
+import { IssueCreateForm } from '@/components/form/issue/issue-create-form';
 import {
 	Card,
 	CardContent,
@@ -5,8 +6,25 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card';
+import { getUserProjects } from '@/lib/projects';
+import { auth } from '@clerk/nextjs/server';
+import { Suspense } from 'react';
 
-export default function Page() {
+async function IssueCreateFormWithData() {
+	const authObj = await auth();
+	const userProjects = await getUserProjects(authObj.userId!);
+
+	return (
+		<IssueCreateForm
+			userProjects={userProjects.map(v => ({
+				id: v.id,
+				name: v.name!,
+			}))}
+		/>
+	);
+}
+
+export default async function Page() {
 	return (
 		<div className="w-full max-w-3xl">
 			<Card>
@@ -17,7 +35,9 @@ export default function Page() {
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
-					{/* <IssueCreateForm userProjects={userProjects} /> */}
+					<Suspense fallback={<div>Loading project data...</div>}>
+						<IssueCreateFormWithData />
+					</Suspense>
 				</CardContent>
 			</Card>
 		</div>

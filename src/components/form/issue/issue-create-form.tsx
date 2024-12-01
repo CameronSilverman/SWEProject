@@ -13,8 +13,7 @@ import {
 	FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { InferSelectModel } from 'drizzle-orm';
-import { projects, projectTechnologies } from '@/lib/db/schema';
+import { projectTechnologies } from '@/lib/db/schema';
 import {
 	Select,
 	SelectContent,
@@ -58,7 +57,7 @@ export type IssueCreateFormData = z.infer<typeof formSchema>;
 export function IssueCreateForm({
 	userProjects,
 }: {
-	userProjects: InferSelectModel<typeof projects>[];
+	userProjects: { id: number; name: string }[];
 }) {
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
@@ -114,7 +113,7 @@ export function IssueCreateForm({
 							<Select onValueChange={field.onChange} defaultValue={field.value}>
 								<FormControl>
 									<SelectTrigger>
-										<SelectValue>Select a project</SelectValue>
+										<SelectValue placeholder='Select a project' />
 									</SelectTrigger>
 								</FormControl>
 								<SelectContent>
@@ -163,7 +162,7 @@ export function IssueCreateForm({
 							<Select onValueChange={field.onChange} defaultValue={field.value}>
 								<FormControl>
 									<SelectTrigger>
-										<SelectValue>Select a difficulty</SelectValue>
+										<SelectValue placeholder='Select a difficulty' />
 									</SelectTrigger>
 								</FormControl>
 								<SelectContent>

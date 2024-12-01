@@ -10,6 +10,7 @@ export async function createIssueWithData(data: IssueCreateFormData) {
 		description: data.description,
 		projectId: parseInt(data.project),
 		difficulty: data.difficulty,
+		technologies: data.technologies.map(t => t.value),
 		assigned: []
 	}).returning();
 
