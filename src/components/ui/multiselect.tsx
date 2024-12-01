@@ -1,3 +1,5 @@
+// https://shadcnui-expansions.typeart.cc/docs/multiple-selector
+
 'use client';
 
 import { Command as CommandPrimitive, useCommandState } from 'cmdk';
