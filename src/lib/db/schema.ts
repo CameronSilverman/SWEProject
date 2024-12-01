@@ -164,8 +164,7 @@ export const contributorRoles = pgEnum('contributor_roles', [
 export const difficulty = pgEnum('difficulty', ['easy', 'medium', 'hard']);
 
 export const userProfiles = pgTable('user_profiles', {
-	id: integer().primaryKey().generatedAlwaysAsIdentity(),
-	clerkId: varchar('clerk_id', { length: 256 }).notNull(),
+	id: varchar({ length: 256 }).primaryKey(),
 	biography: text(),
 	programmingLanguages: programmingLanguages().array(),
 	technicalInterests: technicalInterests().array(),
@@ -184,7 +183,7 @@ export const projectContributors = pgTable('project_contributors', {
 	projectId: integer()
 		.references(() => projects.id)
 		.notNull(),
-	userId: integer()
+	userId: varchar()
 		.references(() => userProfiles.id)
 		.notNull(),
 	role: contributorRoles().default('contributor'),
@@ -195,7 +194,7 @@ export const projectTasks = pgTable('project_tasks', {
 	projectId: integer()
 		.references(() => projects.id)
 		.notNull(),
-	assigned: integer()
+	assigned: varchar()
 		.references(() => userProfiles.id)
 		.array(),
 	title: varchar({ length: 256 }).notNull(),
