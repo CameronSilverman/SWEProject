@@ -165,6 +165,8 @@ export const difficulty = pgEnum('difficulty', ['easy', 'medium', 'hard']);
 
 export const userProfiles = pgTable('user_profiles', {
 	id: varchar({ length: 256 }).primaryKey(),
+	firstName: varchar({ length: 256 }).notNull(),
+	lastName: varchar({ length: 256 }).notNull(),
 	biography: text(),
 	programmingLanguages: programmingLanguages().array(),
 	technicalInterests: technicalInterests().array(),
@@ -191,6 +193,7 @@ export const projectContributors = pgTable('project_contributors', {
 
 export const projectTasks = pgTable('project_tasks', {
 	id: integer().primaryKey().generatedAlwaysAsIdentity(),
+	creator: varchar({ length: 256 }).references(() => userProfiles.id).notNull(),
 	projectId: integer()
 		.references(() => projects.id)
 		.notNull(),

@@ -9,7 +9,7 @@ import {
 
 export default function Page() {
 	return (
-		<div className="w-full max-w-3xl">
+		<div className="min-h-screen flex items-center w-full max-w-3xl">
 			<Card>
 				<CardHeader>
 					<CardTitle>Create Project</CardTitle>

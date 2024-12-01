@@ -3,12 +3,15 @@ import { DifficultyBadge } from '../badge/difficulty-badge';
 import { Badge } from '../ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { projectTechnologies } from '@/lib/db/schema';
+
+type TechnologyEnum = (typeof projectTechnologies.enumValues)[number];
 
 interface IssueCardProps {
 	title: string;
 	assignee: string;
 	difficulty: 'easy' | 'medium' | 'hard';
-	technologies?: string[];
+	technologies: TechnologyEnum[];
 	description: string;
 }
 

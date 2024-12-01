@@ -16,7 +16,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { programmingLanguages, technicalInterests } from '@/lib/db/schema';
 import { createUserProfileWithData } from '@/lib/users';
-import { useAuth } from '@clerk/nextjs';
+import { useAuth, useUser } from '@clerk/nextjs';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -62,6 +62,7 @@ export function OnboardingForm() {
 
 	const router = useRouter();
 	const auth = useAuth();
+	const { user } = useUser();
 	const [loading, setLoading] = useState(false);
 	const { toast } = useToast();
 
@@ -69,7 +70,12 @@ export function OnboardingForm() {
 		setLoading(true);
 
 		try {
-			await createUserProfileWithData(auth.userId!, data);
+			await createUserProfileWithData(
+				auth.userId!,
+				user!.firstName!,
+				user!.lastName!,
+				data
+			);
 			router.push('/core/dashboard');
 		} catch (err) {
 			toast({ title: 'Error Creating Profile', description: err as string });

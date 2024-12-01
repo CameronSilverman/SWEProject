@@ -11,12 +11,16 @@ export async function userProfileExists(id: string) {
 
 export async function createUserProfileWithData(
 	id: string,
+	firstName: string,
+	lastName: string,
 	data: OnboardingFormData
 ) {
 	await db
 		.insert(userProfiles)
 		.values({
 			id,
+			firstName,
+			lastName,
 			biography: data.biography,
 			technicalInterests: data.technologies.map(t => t.value),
 			programmingLanguages: data.programmingLanguages.map(l => l.value),

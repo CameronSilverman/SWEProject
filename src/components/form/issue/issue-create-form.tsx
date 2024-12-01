@@ -29,6 +29,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { ButtonLoading } from '@/components/ui/loading-button';
 import { useToast } from '@/hooks/use-toast';
+import { useAuth } from '@clerk/nextjs';
 
 const formSchema = z.object({
 	title: z
@@ -70,13 +71,14 @@ export function IssueCreateForm({
 
 	const [loading, setLoading] = useState(false);
 	const router = useRouter();
+	const auth = useAuth();
 	const { toast } = useToast();
 
 	async function onSubmit(data: z.infer<typeof formSchema>) {
 		setLoading(true);
 
 		try {
-			const id = await createIssueWithData(data);
+			const id = await createIssueWithData(auth.userId!, data);
 			router.push(`/issues/${id}`);
 		} catch (err) {
 			toast({ title: 'Error Creating Issue', description: err as string });
@@ -113,7 +115,7 @@ export function IssueCreateForm({
 							<Select onValueChange={field.onChange} defaultValue={field.value}>
 								<FormControl>
 									<SelectTrigger>
-										<SelectValue placeholder='Select a project' />
+										<SelectValue placeholder="Select a project" />
 									</SelectTrigger>
 								</FormControl>
 								<SelectContent>
@@ -162,7 +164,7 @@ export function IssueCreateForm({
 							<Select onValueChange={field.onChange} defaultValue={field.value}>
 								<FormControl>
 									<SelectTrigger>
-										<SelectValue placeholder='Select a difficulty' />
+										<SelectValue placeholder="Select a difficulty" />
 									</SelectTrigger>
 								</FormControl>
 								<SelectContent>
