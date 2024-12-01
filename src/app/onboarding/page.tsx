@@ -1,4 +1,4 @@
-import { ProjectCreateForm } from '@/components/form/project/project-create-form';
+import { OnboardingForm } from '@/components/form/onboarding/onboarding-form';
 import {
 	Card,
 	CardContent,
@@ -12,14 +12,13 @@ export default function Page() {
 		<div className="w-full max-w-3xl">
 			<Card>
 				<CardHeader>
-					<CardTitle>Create Project</CardTitle>
+					<CardTitle>Welcome!</CardTitle>
 					<CardDescription>
-						Create a project to start building something amazing with fellow
-						Gators.
+						Before we get started, we need to know a little bit about you. Please fill out the form below.
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
-					<ProjectCreateForm />
+					<OnboardingForm />
 				</CardContent>
 			</Card>
 		</div>

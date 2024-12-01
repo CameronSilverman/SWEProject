@@ -22,7 +22,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select';
-import { MultiSelect } from '@/components/ui/multiselect';
+import MultipleSelector from '@/components/ui/multiselect';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
 import { createIssueWithData } from '@/lib/issues';
@@ -42,7 +42,12 @@ const formSchema = z.object({
 		.max(500, { message: 'Description cannot be more than 500 characters' }),
 	project: z.string().min(1, { message: 'Project is required' }), // this shouldn't even be empty
 	technologies: z
-		.array(z.enum(projectTechnologies.enumValues))
+		.array(
+			z.object({
+				label: z.enum(projectTechnologies.enumValues),
+				value: z.enum(projectTechnologies.enumValues),
+			})
+		)
 		.min(1, { message: 'Select at least 1 technology' })
 		.max(3, { message: 'Only 3 technologies can be selected' }),
 	difficulty: z.enum(['easy', 'medium', 'hard']).default('easy'),
@@ -130,14 +135,14 @@ export function IssueCreateForm({
 						<FormItem>
 							<FormLabel>Project</FormLabel>
 							<FormControl>
-								<MultiSelect
-									selected={field.value}
+								<MultipleSelector
 									options={projectTechnologies.enumValues.map(v => {
 										return {
 											label: v,
 											value: v,
 										};
 									})}
+									placeholder="Select the technologies used in this project"
 									{...field}
 								/>
 							</FormControl>
