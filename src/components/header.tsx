@@ -1,9 +1,7 @@
-// components/Header.tsx
 'use client';
 
 import { SignedIn, SignedOut } from '@clerk/nextjs';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useState, useEffect, ReactNode } from 'react';
 
 const HeaderButton = ({
@@ -33,7 +31,6 @@ const HeaderButton = ({
 
 export default function Header() {
 	const [isScrolled, setIsScrolled] = useState(false);
-	const pathname = usePathname();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -63,8 +60,6 @@ export default function Header() {
 				>
 					CollabraGator
 				</Link>
-
-				{/* TODO: Make it work with session_token */}
 
 				{/* Signed Out Buttons */}
 				<div className="flex gap-4">
