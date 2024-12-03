@@ -25,8 +25,9 @@ export async function createIssueWithData(
 	return res[0].id;
 }
 
+export const dynamic = 'force-dynamic';
+
 export async function getIssues() {
-	const { cache }: { cache: 'no-store' } = { cache: 'no-store' };
 	return await db
 		.select({
 			id: projectTasks.id,
