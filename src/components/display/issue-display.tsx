@@ -1,3 +1,6 @@
+'use server';
+export const dynamic = 'force-dynamic';
+
 import { getIssues } from '@/lib/issues';
 import { IssueCard } from '../card/issue-card';
 
