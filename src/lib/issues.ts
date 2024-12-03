@@ -25,8 +25,6 @@ export async function createIssueWithData(
 	return res[0].id;
 }
 
-export const dynamic = 'force-dynamic';
-
 export async function getIssues() {
 	return await db
 		.select({
