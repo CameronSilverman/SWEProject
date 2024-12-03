@@ -26,6 +26,7 @@ export async function createIssueWithData(
 }
 
 export async function getIssues() {
+	const { cache }: { cache: 'no-store' } = { cache: 'no-store' };
 	return await db
 		.select({
 			id: projectTasks.id,
