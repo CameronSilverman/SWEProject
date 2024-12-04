@@ -1,8 +1,11 @@
 'use client';
 
+import { ProfileCard } from '@/components/card/profile-card';
 import ProjectCard from '@/components/card/project-card';
+import { getUserProfile } from '@/lib/users';
+import { auth } from '@clerk/nextjs/server';
 
-export default function Page() {
+export default async function Page() {
 	const projects = [
 		{
 			id: 1,
@@ -63,46 +66,22 @@ export default function Page() {
 		},
 	];
 
+	const authContext = await auth();
+
+	const userProfile = (await getUserProfile(authContext.userId!))[0];
+
 	return (
 		<main className="min-h-screen pt-24 pb-16">
 			{/* Main Content Section */}
 			<div className="flex flex-col lg:flex-row items-start justify-center space-y-10 lg:space-y-0 lg:space-x-10 mt-24 px-4">
-				{/* Profile Section */}
-				<div className="bg-white rounded-xl p-8 shadow-lg w-full lg:w-96">
-					<div className="relative">
-						<div className="mx-auto w-24 h-24 rounded-full bg-gradient-to-r from-teal-200 to-pink-100 mb-4"></div>
-						<div className="absolute bottom-0 right-1/3 bg-green-500 w-4 h-4 rounded-full border-2 border-white"></div>
-					</div>
-
-					<h1 className="text-3xl font-semibold">John Doe</h1>
-					<p className="text-gray-500 mb-2">@jonnyDoe</p>
-
-					<div className="flex items-center gap-2 text-gray-600 mb-4">
-						<span className="text-sm">Gainesville, FL</span>
-						<span className="text-sm">Joined 2023</span>
-					</div>
-
-					<p className="text-sm text-gray-700 mb-6">
-						Passionate programmer and lifelong learner at the University of
-						Florida! I thrive on coding challenges and enjoy collaborating with
-						fellow Gators to create innovative solutions every day.
-					</p>
-
-					<div className="grid grid-cols-3 gap-4 text-center border-t pt-4">
-						<div>
-							<div className="font-semibold">15</div>
-							<div className="text-xs text-gray-500">Projects</div>
-						</div>
-						<div>
-							<div className="font-semibold">1.2k</div>
-							<div className="text-xs text-gray-500">Followers</div>
-						</div>
-						<div>
-							<div className="font-semibold">48</div>
-							<div className="text-xs text-gray-500">Following</div>
-						</div>
-					</div>
-				</div>
+				<ProfileCard
+					firstName={userProfile.firstName}
+					lastName={userProfile.lastName}
+					biography={userProfile.biography!}
+					techInterests={userProfile.technicalInterests!}
+					programmingLanguages={userProfile.programmingLanguages!}
+					username="colinmcclure"
+				/>
 
 				{/* Projects Section */}
 				<div className="bg-white rounded-xl p-8 shadow-lg w-full lg:w-[32rem]">
