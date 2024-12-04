@@ -1,8 +1,3 @@
-'use server';
-
-export const runtime = 'edge';
-export const revalidate = 0;
-
 import { getIssues } from '@/lib/issues';
 import { IssueCard } from '../card/issue-card';
 
