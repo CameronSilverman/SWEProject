@@ -2,17 +2,17 @@
 // import {ProjectCard} from '@/components/card/project-card';
 
 // Mock data type
-interface Project {
-	id: number;
-	name: string;
-	tags: string[];
-	description: string;
-	status: string;
-	statusColor: string;
-	lastUpdated: string;
-	stars: number;
-	collaborators: number;
-}
+// interface Project {
+// 	id: number;
+// 	name: string;
+// 	tags: string[];
+// 	description: string;
+// 	status: string;
+// 	statusColor: string;
+// 	lastUpdated: string;
+// 	stars: number;
+// 	collaborators: number;
+// }
 
 // Mock data
 // const mockProjects: Project[] = [
