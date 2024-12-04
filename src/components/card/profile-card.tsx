@@ -26,8 +26,8 @@ export function ProfileCard({
 	return (
 		<Card className="w-full max-w-md">
 			<CardHeader className="flex flex-row items-center gap-4">
-				<Avatar className="h-16 w-16 flex items-center justify-center bg-secondary">
-					<AvatarFallback className="text-lg font-semibold bg-secondary-foreground">
+				<Avatar className="h-16 w-16 flex items-center justify-center bg-secondary rounded-full">
+					<AvatarFallback className="text-lg font-semibold">
 						{`${firstName} ${lastName}`
 							.split(' ')
 							.map(n => n[0])
