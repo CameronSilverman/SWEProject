@@ -1,5 +1,6 @@
 import { ProfileCard } from '@/components/card/profile-card';
-import ProjectCard from '@/components/card/project-card';
+import { ProjectCard } from '@/components/card/project-card';
+import { ProjectDisplay } from '@/components/display/project-display';
 import { getUserProfile } from '@/lib/users';
 import { auth } from '@clerk/nextjs/server';
 
@@ -82,20 +83,7 @@ export default async function Page() {
 				/>
 
 				{/* Projects Section */}
-				<div className="bg-white rounded-xl p-8 shadow-lg w-full lg:w-[32rem]">
-					<div className="flex justify-between items-center mb-6">
-						<h2 className="text-xl font-semibold">Recent Projects</h2>
-						<button className="text-sm text-blue-500 hover:text-blue-600">
-							View All
-						</button>
-					</div>
-
-					<div className="space-y-6">
-						{projects.map(project => (
-							<ProjectCard key={project.id} project={project} />
-						))}
-					</div>
-				</div>
+				<ProjectDisplay userId={authContext.userId!} />
 			</div>
 		</main>
 	);

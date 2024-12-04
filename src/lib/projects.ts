@@ -34,7 +34,7 @@ export async function createProjectWithData(
 export const getUserProjects = unstable_cache(
 	async (userId: string) => {
 		return await db
-			.select({ name: projects.name, id: projects.id })
+			.select()
 			.from(projects)
 			.innerJoin(
 				projectContributors,
