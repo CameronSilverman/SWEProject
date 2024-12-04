@@ -27,7 +27,7 @@ export function ProfileCard({
 		<Card className="w-full max-w-md">
 			<CardHeader className="flex flex-row items-center gap-4">
 				<Avatar className="h-16 w-16">
-					<AvatarFallback>
+					<AvatarFallback className="flex items-center justify-center text-lg font-semibold">
 						{`${firstName} ${lastName}`
 							.split(' ')
 							.map(n => n[0])
@@ -39,7 +39,7 @@ export function ProfileCard({
 					<p className="text-sm text-muted-foreground">@{username}</p>
 				</div>
 			</CardHeader>
-			<CardContent>
+			<CardContent className="space-y-4">
 				<p className="text-sm text-muted-foreground">{biography}</p>
 				<div>
 					<h3 className="text-sm font-semibold mb-2">Tech Interests</h3>
