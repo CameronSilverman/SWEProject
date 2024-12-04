@@ -4,6 +4,7 @@ import { ProjectCreateFormData } from '@/components/form/project/project-create-
 import { db } from './db';
 import { projectContributors, projects } from './db/schema';
 import { eq } from 'drizzle-orm';
+import { revalidateTag, unstable_cache } from 'next/cache';
 
 export async function createProjectWithData(
 	userId: string,
@@ -25,16 +26,22 @@ export async function createProjectWithData(
 		role: 'owner',
 	});
 
+	revalidateTag('projects');
+
 	return res[0].id;
 }
 
-export async function getUserProjects(userId: string) {
-	return await db
-		.select({ name: projects.name, id: projects.id })
-		.from(projects)
-		.innerJoin(
-			projectContributors,
-			eq(projects.id, projectContributors.projectId)
-		)
-		.where(eq(projectContributors.userId, userId));
-}
+export const getUserProjects = unstable_cache(
+	async (userId: string) => {
+		return await db
+			.select({ name: projects.name, id: projects.id })
+			.from(projects)
+			.innerJoin(
+				projectContributors,
+				eq(projects.id, projectContributors.projectId)
+			)
+			.where(eq(projectContributors.userId, userId));
+	},
+	['projects'],
+	{ revalidate: 3600, tags: ['projects'] }
+);
