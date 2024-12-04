@@ -17,8 +17,8 @@ async function IssueCreateFormWithData() {
 	return (
 		<IssueCreateForm
 			userProjects={userProjects.map(v => ({
-				id: v.id,
-				name: v.name!,
+				id: v.projects.id,
+				name: v.projects.name!,
 			}))}
 		/>
 	);

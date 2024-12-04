@@ -1,5 +1,5 @@
 'use client';
-import ProjectCard from '@/components/card/project-card';
+import {ProjectCard} from '@/components/card/project-card';
 
 // Mock data type
 interface Project {
@@ -58,9 +58,9 @@ export default function Page() {
 	return (
 		<main className="min-h-screen pt-32 pb-12 px-6 md:px-12 lg:px-24">
 			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-				{mockProjects.map(project => (
-					<ProjectCard key={project.id} project={project} />
-				))}
+				{/* {mockProjects.map(project => (
+					// <ProjectCard key={project.id} project={project} />
+				))} */}
 			</div>
 		</main>
 	);
