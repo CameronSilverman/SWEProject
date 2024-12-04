@@ -1,5 +1,3 @@
-'use client';
-
 import { ProfileCard } from '@/components/card/profile-card';
 import ProjectCard from '@/components/card/project-card';
 import { getUserProfile } from '@/lib/users';
