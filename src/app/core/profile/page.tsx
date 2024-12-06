@@ -1,10 +1,13 @@
 import { ProfileCard } from '@/components/card/profile-card';
 import { ProjectDisplay } from '@/components/display/project-display';
 import { getUserProfile } from '@/lib/users';
-import { auth } from '@clerk/nextjs/server';
+import { auth, clerkClient } from '@clerk/nextjs/server';
 
 export default async function Page() {
 	const authContext = await auth();
+
+	const clerkApiClient = await clerkClient();
+	const userResponse = await clerkApiClient.users.getUser(authContext.userId!);
 
 	const userProfile = (await getUserProfile(authContext.userId!))[0];
 
@@ -18,7 +21,7 @@ export default async function Page() {
 					biography={userProfile.biography!}
 					techInterests={userProfile.technicalInterests!}
 					programmingLanguages={userProfile.programmingLanguages!}
-					username="colinmcclure"
+					username={userResponse.username!}
 				/>
 
 				{/* Projects Section */}
