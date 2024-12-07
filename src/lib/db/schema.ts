@@ -174,10 +174,10 @@ export const userProfiles = pgTable('user_profiles', {
 
 export const projects = pgTable('projects', {
 	id: integer().primaryKey().generatedAlwaysAsIdentity(),
-	name: varchar({ length: 256 }),
-	description: text(),
-	archived: boolean().default(false),
-	featured: boolean().default(false),
+	name: varchar({ length: 256 }).notNull(),
+	description: text().notNull(),
+	archived: boolean().default(false).notNull(),
+	featured: boolean().default(false).notNull(),
 });
 
 export const projectContributors = pgTable('project_contributors', {
@@ -193,7 +193,9 @@ export const projectContributors = pgTable('project_contributors', {
 
 export const projectTasks = pgTable('project_tasks', {
 	id: integer().primaryKey().generatedAlwaysAsIdentity(),
-	creator: varchar({ length: 256 }).references(() => userProfiles.id).notNull(),
+	creator: varchar({ length: 256 })
+		.references(() => userProfiles.id)
+		.notNull(),
 	projectId: integer()
 		.references(() => projects.id)
 		.notNull(),

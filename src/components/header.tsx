@@ -2,6 +2,7 @@
 
 import { SignedIn, SignedOut } from '@clerk/nextjs';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState, useEffect, ReactNode } from 'react';
 import { ProfileDropdown } from './header/profile-button';
 
@@ -30,8 +31,17 @@ const HeaderButton = ({
 	);
 };
 
-export default function Header() {
+interface HeaderProps {
+	firstName?: string | null;
+	lastName?: string | null;
+}
+
+export default function Header({
+	firstName,
+	lastName
+}: HeaderProps) {
 	const [isScrolled, setIsScrolled] = useState(false);
+	const pathname = usePathname();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -73,10 +83,16 @@ export default function Header() {
 						</HeaderButton>
 					</SignedOut>
 					<SignedIn>
-						<HeaderButton href="/core/dashboard" color="orange">
-							Dashboard
-						</HeaderButton>
-						<ProfileDropdown />
+						{pathname === '/core/dashboard' ? (
+							<HeaderButton href="/core/project/search" color="blue">
+								Projects
+							</HeaderButton>
+						) : (
+							<HeaderButton href="/core/dashboard" color="orange">
+								Dashboard
+							</HeaderButton>
+						)}
+						<ProfileDropdown firstName={firstName!} lastName={lastName!}/>
 					</SignedIn>
 				</div>
 			</div>
