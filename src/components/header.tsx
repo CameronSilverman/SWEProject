@@ -3,6 +3,7 @@
 import { SignedIn, SignedOut } from '@clerk/nextjs';
 import Link from 'next/link';
 import { useState, useEffect, ReactNode } from 'react';
+import { ProfileDropdown } from './header/profile-button';
 
 const HeaderButton = ({
 	color,
@@ -75,9 +76,7 @@ export default function Header() {
 						<HeaderButton href="/core/dashboard" color="orange">
 							Dashboard
 						</HeaderButton>
-						<HeaderButton href="/core/profile" color="blue">
-							Profile
-						</HeaderButton>
+						<ProfileDropdown />
 					</SignedIn>
 				</div>
 			</div>
