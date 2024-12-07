@@ -84,7 +84,7 @@ export default function Header({
 					</SignedOut>
 					<SignedIn>
 						{pathname === '/core/dashboard' ? (
-							<HeaderButton href="/core/projects/search" color="blue">
+							<HeaderButton href="/core/project/search" color="blue">
 								Projects
 							</HeaderButton>
 						) : (
