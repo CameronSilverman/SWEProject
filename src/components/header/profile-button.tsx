@@ -6,15 +6,27 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { User, Settings, HelpCircle, LogOut } from 'lucide-react'
+import { useAuth } from "@clerk/clerk-react"
 
-export function ProfileDropdown() {
+export function ProfileDropdown({
+	firstName,
+	lastName
+}: {
+	firstName: string;
+	lastName: string;
+}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-12 w-12 rounded-full">
           <Avatar className="h-10 w-10">
             <AvatarImage src="/avatars/01.png" alt="@johndoe" />
-            <AvatarFallback>JD</AvatarFallback>
+            <AvatarFallback className="text-lg font-semibold">
+						{`${firstName} ${lastName}`
+							.split(' ')
+							.map(n => n[0])
+							.join('')}
+					</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>

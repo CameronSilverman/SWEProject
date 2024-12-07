@@ -30,7 +30,15 @@ const HeaderButton = ({
 	);
 };
 
-export default function Header() {
+interface HeaderProps {
+	firstName?: string | null;
+	lastName?: string | null;
+}
+
+export default function Header({
+	firstName,
+	lastName
+}: HeaderProps) {
 	const [isScrolled, setIsScrolled] = useState(false);
 
 	useEffect(() => {
@@ -76,7 +84,7 @@ export default function Header() {
 						<HeaderButton href="/core/dashboard" color="orange">
 							Dashboard
 						</HeaderButton>
-						<ProfileDropdown />
+						<ProfileDropdown firstName={firstName!} lastName={lastName!}/>
 					</SignedIn>
 				</div>
 			</div>
