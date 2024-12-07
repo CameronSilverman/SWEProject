@@ -6,7 +6,6 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSepara
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { User, Settings, HelpCircle, LogOut } from 'lucide-react'
-import { useAuth } from "@clerk/clerk-react"
 
 export function ProfileDropdown({
 	firstName,
