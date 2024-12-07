@@ -2,7 +2,7 @@ import { getUserProjects } from '@/lib/projects';
 import { ProjectCard } from '../card/project-card';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
-export async function ProjectDisplay({ userId }: { userId: string }) {
+export async function UserProjectDisplay({ userId }: { userId: string }) {
 	const projects = await getUserProjects(userId);
 
 	return (

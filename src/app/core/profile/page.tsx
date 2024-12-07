@@ -1,5 +1,5 @@
 import { ProfileCard } from '@/components/card/profile-card';
-import { ProjectDisplay } from '@/components/display/project-display';
+import { UserProjectDisplay } from '@/components/display/user-project-display';
 import { getUserProfile } from '@/lib/users';
 import { auth, clerkClient } from '@clerk/nextjs/server';
 
@@ -25,7 +25,7 @@ export default async function Page() {
 				/>
 
 				{/* Projects Section */}
-				<ProjectDisplay userId={authContext.userId!} />
+				<UserProjectDisplay userId={authContext.userId!} />
 			</div>
 		</main>
 	);
