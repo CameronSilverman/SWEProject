@@ -31,6 +31,20 @@ export async function createProjectWithData(
 	return res[0].id;
 }
 
+export const getAllProjects = unstable_cache(
+	async () => {
+		return await db
+			.select()
+			.from(projects)
+			.innerJoin(
+				projectContributors,
+				eq(projects.id, projectContributors.projectId)
+			);
+	},
+	['user-projects'],
+	{ revalidate: 3600, tags: ['user-projects'] }
+);
+
 export const getUserProjects = unstable_cache(
 	async (userId: string) => {
 		return await db
