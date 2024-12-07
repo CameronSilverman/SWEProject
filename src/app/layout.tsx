@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import Header from '@/components/header';
+import { HeaderDisplay } from '@/components/display/header-display';
 import Footer from '@/components/footer';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Toaster } from '@/components/ui/toaster';
@@ -37,7 +37,7 @@ export default function RootLayout({
 					<div className="fixed inset-0 bg-gradient-to-br from-blue-600 via-purple-500 to-orange-400 opacity-90" />
 
 					<div className="relative z-10 flex flex-col min-h-screen">
-						<Header />
+						<HeaderDisplay />
 
 						<main className="z-10 flex-grow flex items-center justify-center px-4">
 							{children}
